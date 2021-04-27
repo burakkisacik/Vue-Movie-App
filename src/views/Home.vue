@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <SearchBox />
-    <MovieList />
+    <SearchBox @gotMovies="moviesArrayHandler" />
+    <MovieList :movielist="movies" />
   </div>
 </template>
 
@@ -14,7 +14,16 @@ export default {
     SearchBox,
     MovieList,
   },
-  setup() {},
+  data() {
+    return {
+      movies: [],
+    };
+  },
+  methods: {
+    moviesArrayHandler: function(movieArray) {
+      this.movies = movieArray;
+    },
+  },
 };
 </script>
 

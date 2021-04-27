@@ -1,10 +1,10 @@
 <template>
-  <div class="movieList-container">
-    <Movie />
-    <Movie />
-    <Movie />
-    <Movie />
-    <Movie />
+  <div
+    class="movieList-container"
+    v-for="movie in movielist"
+    :key="movie.imdbID"
+  >
+    <Movie :title="movie.Title" :year="movie.Year" :poster="movie.Poster" />
   </div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
   components: {
     Movie,
   },
+  props: ['movielist'],
 };
 </script>
 

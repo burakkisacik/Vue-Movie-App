@@ -1,25 +1,22 @@
 <template>
   <div class="container">
     <div class="img-filter">
-      <h1 class="title">The X Files</h1>
-      <h2 class="year">Year : 1994</h2>
+      <h1 class="title">{{ title }}</h1>
+      <h2 class="year">{{ year }}</h2>
       <p class="desc">
         Decrition Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Possimus voluptatum veritatis accusantium cupiditate optio vero.
       </p>
     </div>
 
-    <img
-      class="poster"
-      src="https://m.media-amazon.com/images/M/MV5BMmY4MjgxNjUtZTY2Mi00YzdiLTk3ZjctZmY5NTA4YzUwMjNiXkEyXkFqcGdeQXVyMzM4MjM0Nzg@._V1_SX300.jpg"
-      alt=""
-    />
+    <img class="poster" :src="poster" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'Movie',
+  props: ['title', 'year', 'poster'],
 };
 </script>
 

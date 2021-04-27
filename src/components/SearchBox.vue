@@ -1,12 +1,35 @@
 <template>
   <div class="search-box">
-    <input class="search-bar" type="text" placeholder="Search..." />
+    <input
+      @keyup.enter="fetchMovie"
+      class="search-bar"
+      type="text"
+      placeholder="Search..."
+      v-model="searchMovie"
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: 'SearchBox',
+  data() {
+    return {
+      searchMovie: '',
+      foundedMovies: [],
+    };
+  },
+  methods: {
+    fetchMovie: async function() {
+      const res = await fetch(
+        `http://www.omdbapi.com/?apikey=995242b5&s=${this.searchMovie}&type=movie`
+      );
+      const data = await res.json();
+      this.foundedMovies = data.Search;
+      this.searchMovie = '';
+      this.$emit('gotMovies', this.foundedMovies);
+    },
+  },
 };
 </script>
 
